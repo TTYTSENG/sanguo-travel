@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+*.xlsx
+*.apk
+*.keystore
+*.jks
+repository-created.jpg
+test-output/
