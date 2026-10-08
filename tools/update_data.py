@@ -1,5 +1,5 @@
 """Export only public source sheets. Never export the personal journal."""
-import argparse, json, re
+import argparse, json, re, gzip
 from pathlib import Path
 import openpyxl
 
@@ -33,6 +33,7 @@ def export(source, output):
         if [r[0] for r in old['cities']]!=[r[0] for r in data['cities']] or [r[:4] for r in old['museum']]!=[r[:4] for r in data['museum']]:
             raise ValueError('City/museum catalog changed. Update docs/i18n.js ordering and translations before export.')
     p.write_text('globalThis.SANGUO_DATA='+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';',encoding='utf-8')
+    p.with_suffix('.json.gz').write_bytes(gzip.compress(json.dumps(data,ensure_ascii=False,separators=(',',':')).encode('utf-8'),mtime=0))
     print({k:len(v) for k,v in data.items()})
 
 if __name__=='__main__':
