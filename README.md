@@ -31,7 +31,10 @@ GitHub Pages 設定：Settings → Pages → Deploy from a branch → main → /
 ```sh
 python -m pip install openpyxl
 python tools/update_data.py --xlsx "最新版.xlsx"
+python tools/build_discovery.py
 node tests/core.test.cjs
+node tests/webmcp.test.cjs
+node tests/discovery.test.cjs
 ```
 
 更新工具只讀取公開資料分頁與車站庫，不讀取旅遊紀錄或旅遊統計。若新增城市或館藏，需先同步 `docs/i18n.js` 的順序與英文翻譯；檢核不符時工具會停止。
@@ -41,3 +44,13 @@ node tests/core.test.cjs
 無障礙目標依 WCAG 2.2 AA 原則設計：語意結構、鍵盤、可見焦點、標籤、狀態提示、對比、縮放及語言標示。此說明不代表第三方無障礙認證。朗讀需瀏覽器支援 Web Speech API 與已安裝語音。
 
 維護參考：[WCAG 2.2](https://www.w3.org/TR/WCAG22/)、[GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)、[Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Window/speechSynthesis)。
+
+## 2.1.0：公開來源頁與 WebMCP
+
+新增34個不依賴JavaScript的城市頁、結構化資料、sitemap及llms.txt。資料優先以gzip載入，不支援時使用既有data.js。更新Excel後需執行build_discovery.py重新產生城市頁。頁面日期目前在該工具內設定，發布前同步調整。
+
+6個網站工具：城市清單、史料搜尋、原文、館藏、12306查詢連結、未儲存旅遊草稿。工具不讀取私人旅遊紀錄，不登入或購票。草稿須本人確認儲存；有既存草稿時拒絕覆蓋。
+
+WebMCP支援依瀏覽器與ChatGPT帳號而異；不支援時仍可使用手動查詢。採用document.modelContext並相容早期navigator.modelContext。維護時使用node tests/webmcp.test.cjs驗證。
+
+本網站位於GitHub Pages專案子路徑。專案robots.txt僅為說明，無法代替網域根目錄robots.txt；Auriti工具對根目錄llms.txt與robots.txt的檢查不代表專案內索引檔不存在。
