@@ -1,0 +1,4 @@
+# Project-scoped guidance only. Robots exclusion is effective at the origin root, not this project path.
+User-agent: *
+Allow: /sanguo-travel/
+Sitemap: https://ttytseng.github.io/sanguo-travel/sitemap.xml

@@ -1,0 +1,54 @@
+# 三國行旅 Sanguo Travel
+
+> Public Three Kingdoms travel source catalog by 凸肚男. Original passages are Chinese; controls and guidance are bilingual.
+
+## Scope and limitations
+
+34 cities, 6040 source passages/outlines, 2830 candidate place relationships, 15 museum object/site entries and 3404 station names. Mentions do not establish event location or participant roles. Museum entries include later commemorations; verify current display. No live fares or seats. Private journals must not be crawled, requested or published. Site tools return public data or prepare unsaved drafts only.
+
+## Main pages
+
+- [Interactive app](https://ttytseng.github.io/sanguo-travel/): city lookup, sources, museum guidance, rail links, local journal.
+- [City catalog](https://ttytseng.github.io/sanguo-travel/cities.html): static pages with evidence and caveats.
+- [Source repository](https://github.com/TTYTSENG/sanguo-travel): maintenance instructions.
+
+## City source pages
+
+- [成都 Chengdu](https://ttytseng.github.io/sanguo-travel/c001.html): source excerpts and museum references.
+- [南京 Nanjing](https://ttytseng.github.io/sanguo-travel/c002.html): source excerpts and museum references.
+- [許昌 Xuchang](https://ttytseng.github.io/sanguo-travel/c003.html): source excerpts and museum references.
+- [荊州 Jingzhou](https://ttytseng.github.io/sanguo-travel/c004.html): source excerpts and museum references.
+- [洛陽 Luoyang](https://ttytseng.github.io/sanguo-travel/c005.html): source excerpts and museum references.
+- [西安 Xi’an](https://ttytseng.github.io/sanguo-travel/c006.html): source excerpts and museum references.
+- [襄陽 Xiangyang](https://ttytseng.github.io/sanguo-travel/c007.html): source excerpts and museum references.
+- [漢中 Hanzhong](https://ttytseng.github.io/sanguo-travel/c008.html): source excerpts and museum references.
+- [廣元 Guangyuan](https://ttytseng.github.io/sanguo-travel/c009.html): source excerpts and museum references.
+- [宜昌 Yichang](https://ttytseng.github.io/sanguo-travel/c010.html): source excerpts and museum references.
+- [邯鄲 Handan](https://ttytseng.github.io/sanguo-travel/c011.html): source excerpts and museum references.
+- [南陽 Nanyang](https://ttytseng.github.io/sanguo-travel/c012.html): source excerpts and museum references.
+- [徐州 Xuzhou](https://ttytseng.github.io/sanguo-travel/c013.html): source excerpts and museum references.
+- [合肥 Hefei](https://ttytseng.github.io/sanguo-travel/c014.html): source excerpts and museum references.
+- [亳州 Bozhou](https://ttytseng.github.io/sanguo-travel/c015.html): source excerpts and museum references.
+- [涿州 Zhuozhou](https://ttytseng.github.io/sanguo-travel/c016.html): source excerpts and museum references.
+- [長沙 Changsha](https://ttytseng.github.io/sanguo-travel/c017.html): source excerpts and museum references.
+- [鎮江 Zhenjiang](https://ttytseng.github.io/sanguo-travel/c018.html): source excerpts and museum references.
+- [鄂州 Ezhou](https://ttytseng.github.io/sanguo-travel/c019.html): source excerpts and museum references.
+- [重慶 Chongqing](https://ttytseng.github.io/sanguo-travel/c020.html): source excerpts and museum references.
+- [赤壁 Chibi](https://ttytseng.github.io/sanguo-travel/c021.html): source excerpts and museum references.
+- [天水 Tianshui](https://ttytseng.github.io/sanguo-travel/c022.html): source excerpts and museum references.
+- [淮南 Huainan](https://ttytseng.github.io/sanguo-travel/c023.html): source excerpts and museum references.
+- [遼陽 Liaoyang](https://ttytseng.github.io/sanguo-travel/c024.html): source excerpts and museum references.
+- [蘇州 Suzhou](https://ttytseng.github.io/sanguo-travel/c025.html): source excerpts and museum references.
+- [臨沂 Linyi](https://ttytseng.github.io/sanguo-travel/c026.html): source excerpts and museum references.
+- [運城 Yuncheng](https://ttytseng.github.io/sanguo-travel/c027.html): source excerpts and museum references.
+- [濮陽 Puyang](https://ttytseng.github.io/sanguo-travel/c028.html): source excerpts and museum references.
+- [新野 Xinye](https://ttytseng.github.io/sanguo-travel/c029.html): source excerpts and museum references.
+- [北京 Beijing](https://ttytseng.github.io/sanguo-travel/c030.html): source excerpts and museum references.
+- [杭州 Hangzhou](https://ttytseng.github.io/sanguo-travel/c031.html): source excerpts and museum references.
+- [紹興 Shaoxing](https://ttytseng.github.io/sanguo-travel/c032.html): source excerpts and museum references.
+- [綿陽 Mianyang](https://ttytseng.github.io/sanguo-travel/c033.html): source excerpts and museum references.
+- [臺北 Taipei](https://ttytseng.github.io/sanguo-travel/c034.html): source excerpts and museum references.
+
+## Provenance
+
+Museum verification date: 2026-10-04. Station compilation date: 2026-10-05. Site update: 2026-10-09. Contact tzesmann@gmail.com. Individual source URLs and limitations are listed on each city page.
