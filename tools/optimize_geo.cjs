@@ -41,11 +41,12 @@ for(const f of htmlFiles){
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+htmlFiles.map(f=>`<url><loc>${url(f)}</loc><lastmod>${UPDATED}</lastmod></url>`).join('')+'</urlset>');
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+BASE+'sitemap.xml\n');
 write('llms.txt',read('llms.txt').split('## Event evidence and methods')[0].trimEnd().replaceAll('2026-10-09',UPDATED).replaceAll('https://ttytseng.github.io/sanguo-travel/',BASE).replace(/\.html(?=\))/g,'')+'\n## Event evidence and methods\n\n- [Timeline evidence]('+BASE+'timeline-sources): 67 historical events, original citations and separate fictional hints.\n- [Methods and provenance]('+BASE+'sources): limitations, source dates and citation guidance.\n- [Interactive map]('+BASE+'timeline): 184–280 year-end city nodes; not precise borders.\n');
-write('sw.js',read('sw.js').replace("'sources.html','timeline-sources.html','static-reader.js',",'').replace(/const VERSION='[^']+';/,"const VERSION='2.5.0';").replace("'./','index.html'","'./','index.html','sources.html','timeline-sources.html','static-reader.js'"));
+write('sw.js',read('sw.js').replace("'sources.html','timeline-sources.html','static-reader.js',",'').replace(/const VERSION='[^']+';/,"const VERSION='2.5.1';").replace("'./','index.html'","'./','index.html','sources.html','timeline-sources.html','static-reader.js'"));
 write('web.js',read('web.js').replaceAll('2.2.1','2.4.0'));
 console.log('GEO updated: '+htmlFiles.length+' canonical pages, '+timeline.events.length+' cited events.');
 
 
 
 require('./update_layout.cjs');
+
 
