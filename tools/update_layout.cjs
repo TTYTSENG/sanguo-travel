@@ -18,3 +18,9 @@ console.log('Top reading toolbar applied to all public pages.');
 
 
 
+
+for(const f of ['index.html','timeline.html']){let markup=fs.readFileSync(path.join(docs,f),'utf8');if(!markup.includes('id="free-resources-link"')){const anchor='<a id="free-resources-link" class="button-link resource-entry" href="resources.html" target="_blank" rel="noopener">免費資源下載 ↗（新分頁）</a>';if(f==='index.html')markup=markup.replace('</section>',anchor+'</section>');else markup=markup.replace('<div class="language"',anchor+'<div class="language"');fs.writeFileSync(path.join(docs,f),markup);}
+}
+let source=fs.readFileSync(path.join(docs,'web.js'),'utf8');if(!source.includes("$('nav').querySelector('.map-entry').insertAdjacentHTML")){source=source.replace("for(const b of $('nav').querySelectorAll('button'))", "$('nav').querySelector('.map-entry').insertAdjacentHTML('afterend',`<a class=\"button-link resource-entry\" href=\"resources.html\" target=\"_blank\" rel=\"noopener\">${T('免費資源下載 ↗（新分頁）','Free resources ↗ (new tab)')}</a>`);for(const b of $('nav').querySelectorAll('button'))");}source=source.replaceAll('2.4.0','2.5.0');fs.writeFileSync(path.join(docs,'web.js'),source);
+let worker=fs.readFileSync(path.join(docs,'sw.js'),'utf8').replace(/const VERSION='[^']+';/,"const VERSION='2.5.0';");if(!worker.includes("'resources.html'"))worker=worker.replace("'./','index.html'","'./','index.html','resources.html'");worker=worker.replace("!e.request.url.startsWith(self.registration.scope))return", "!e.request.url.startsWith(self.registration.scope)||new URL(e.request.url).pathname.startsWith('/downloads/'))return");fs.writeFileSync(path.join(docs,'sw.js'),worker);
+
