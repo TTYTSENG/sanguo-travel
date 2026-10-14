@@ -2,7 +2,7 @@
 
 發表人：凸肚男 · 聯繫：[tzesmann@gmail.com](mailto:tzesmann@gmail.com)
 
-網頁入口：https://ttytseng.github.io/sanguo-travel/
+網頁入口：https://sanguo-travel.pages.dev/
 
 操作與維護說明見本頁下方；Word 手冊另行提供給使用者保管。
 
@@ -22,7 +22,7 @@ The bilingual interface includes locations, source passages, museum entries, off
 
 ## 維護
 
-GitHub Pages 設定：Settings → Pages → Deploy from a branch → main → /docs。
+Cloudflare Pages 專案：sanguo-travel，採 Direct Upload；GitHub Pages 發布已停用，儲存庫保留作原始碼管理。
 
 `docs/` 是發布檔案，`tools/` 是資料更新工具，`tests/` 是驗證腳本。公開儲存庫勿放私人旅遊紀錄、帳密、金鑰、Android 簽章檔或整份私人 Excel。
 
@@ -39,7 +39,7 @@ node tests/discovery.test.cjs
 
 更新工具只讀取公開資料分頁與車站庫，不讀取旅遊紀錄或旅遊統計。若新增城市或館藏，需先同步 `docs/i18n.js` 的順序與英文翻譯；檢核不符時工具會停止。
 
-變更後提高 `docs/sw.js` 的 VERSION，並同步網頁顯示版本。提交 main，等 Pages 部署成功後再測試公開網址。既有使用者需關閉本網站所有分頁及獨立 APP 視窗，再重新開啟，使更新的離線快取啟用。資料欄位更動還需同步 travel-schema.js、i18n.js、web.js 與匯入相容性測試。
+變更後提高 `docs/sw.js` 的 VERSION，並同步網頁顯示版本。更新 GitHub main 以保存原始碼；將 docs 內容（不包含外層 docs 資料夾）打包成 ZIP，再到 Cloudflare 專案建立新部署並上傳。提交 GitHub 不會自動部署 Cloudflare。既有使用者需關閉本網站所有分頁及獨立 APP 視窗，再重新開啟，使更新的離線快取啟用。資料欄位更動還需同步 travel-schema.js、i18n.js、web.js 與匯入相容性測試。
 
 無障礙目標依 WCAG 2.2 AA 原則設計：語意結構、鍵盤、可見焦點、標籤、狀態提示、對比、縮放及語言標示。此說明不代表第三方無障礙認證。朗讀需瀏覽器支援 Web Speech API 與已安裝語音。
 
@@ -53,4 +53,36 @@ node tests/discovery.test.cjs
 
 WebMCP支援依瀏覽器與ChatGPT帳號而異；不支援時仍可使用手動查詢。採用document.modelContext並相容早期navigator.modelContext。維護時使用node tests/webmcp.test.cjs驗證。
 
+## 2.2.0：獨立勢力演進地圖
+
+主頁的「勢力演進地圖 ↗（新分頁）」以新分頁開啟 `timeline.html`，不加入原頁面的查詢分頁。直接入口：https://sanguo-travel.pages.dev/timeline.html 。
+
+184–280年，48個城市／戰場節點、67個精選正史事件。可切換年份、逐年播放、跳到上一／下一事件年、搜尋城市或人物、縮放和平移。城市詳情保留正史段落ID、完整原文、紀年與定位限制，演義為可關閉的章回提示。英文介面和摘要另列，原文保留中文。這是年末城市節點的演進，不是完整疆界、行政區或軍力復原；戰場菱形不算城市控制。
+
+6個起始年度未核定的基準預設不參與控制權計算。其餘節點也可能是區域歸屬推定，或沿用前一次記錄，詳情均標示。政權滅亡與承接另有規則，避免把袁術延續到其死後、把蜀延長到264年，或把司馬氏掌實權提前當成晉朝。進攻未成功不改色，例如215合肥與219樊城。
+
+獨立朗讀控制可讀城市事件、當年摘要或所選正史原文，提供語音、速度、暫停、繼續及停止。朗讀會停止時間軸播放，改年份、事件、語言、切到背景會停止朗讀。裝置沒有Web Speech API時保留文字與螢幕閱讀器操作；這些控制不保證每台裝置有中英文語音。
+
+`tools/build_timeline.py` 是事件與控制變更的維護來源，生成 `docs/timeline-data.js`。需提供既有公開史料JSON及Natural Earth陸地資料，例如在本專案根目錄：
+
+```sh
+python tools/build_timeline.py --history-json ../work/prepared.json --novel-json ../work/romance_parsed.json --land-json ../work/natural-earth-land.json
+node tests/timeline.test.cjs
+```
+
+預設路徑對應本地整理工作目錄；其他裝置須指定自己的三個JSON路徑。`prepared.json` 為正史段落集合，`romance_parsed.json` 為演義章回集合，均不含私人旅遊紀錄。控制權只能由人工核對年序的記錄更新，不能用地名字串命中自動生成。若追加事件，保留既有MAP編號，新增編號並按年排序，以免分享連結及來源關聯失效。
+
+海岸資料來自 [Natural Earth公共領域陸地資料](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson)，比例尺1:110m。地圖只使用現代陸地輪廓，不畫現代國界；古海岸、河道和城址仍需另考。未加入外部地圖圖磚、追蹤器或新帳號需求，離線快取包含整個地圖頁。
+
 本網站位於GitHub Pages專案子路徑。專案robots.txt僅為說明，無法代替網域根目錄robots.txt；Auriti工具對根目錄llms.txt與robots.txt的檢查不代表專案內索引檔不存在。
+
+## 2.3.1：Cloudflare 移植與 GEO 結構
+
+正式網址：https://sanguo-travel.pages.dev/ 。39個HTML頁的canonical、sitemap與公開索引統一使用Cloudflare正式網址（HTML頁使用平台的無副檔名網址）。新資料方法頁 /sources 及事件來源年表 /timeline-sources 可不開JavaScript直接閱讀67個精選正史事件與來源。
+
+每次更新資料執行 python tools/build_discovery.py，會接續呼叫 node tools/optimize_geo.cjs；地圖資料修改後也需重跑 optimize_geo.cjs。頁面更新日期常數在 optimize_geo.cjs 的 UPDATED，資料原始查核日期獨立保留。已加入網站／頁面／麵包屑結構化資料、公開索引導覽、靜態頁朗讀及圖片 alt 朗讀。
+
+驗證：node tests/geo.test.cjs，加上既有 core、webmcp、discovery、timeline 測試。所有後續內容以WCAG 2.2 AA為驗收目標；資訊圖片須提供與語言、語境一致的alt，複雜圖表另附詳細文字說明。自動測試不等於完整WCAG合規認證。GEO改善搜尋可讀性與可核對性，不保證AI引用或排名。
+
+個人旅遊紀錄屬於網址與瀏覽器的本機儲存；新網址不會自動讀取舊網址紀錄。移轉方式為舊頁匯出JSON、新頁匯入。GitHub Pages已停用；如須取回舊紀錄，可暫時恢復旧頁供使用者匯出，再關閉。
+
