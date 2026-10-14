@@ -74,7 +74,7 @@ node tests/timeline.test.cjs
 
 海岸資料來自 [Natural Earth公共領域陸地資料](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson)，比例尺1:110m。地圖只使用現代陸地輪廓，不畫現代國界；古海岸、河道和城址仍需另考。未加入外部地圖圖磚、追蹤器或新帳號需求，離線快取包含整個地圖頁。
 
-本網站位於GitHub Pages專案子路徑。專案robots.txt僅為說明，無法代替網域根目錄robots.txt；Auriti工具對根目錄llms.txt與robots.txt的檢查不代表專案內索引檔不存在。
+本網站已移植到Cloudflare Pages獨立根網址；robots.txt、llms.txt與sitemap.xml皆由正式網址根目錄提供。
 
 ## 2.3.1：Cloudflare 移植與 GEO 結構
 
@@ -85,4 +85,5 @@ node tests/timeline.test.cjs
 驗證：node tests/geo.test.cjs，加上既有 core、webmcp、discovery、timeline 測試。所有後續內容以WCAG 2.2 AA為驗收目標；資訊圖片須提供與語言、語境一致的alt，複雜圖表另附詳細文字說明。自動測試不等於完整WCAG合規認證。GEO改善搜尋可讀性與可核對性，不保證AI引用或排名。
 
 個人旅遊紀錄屬於網址與瀏覽器的本機儲存；新網址不會自動讀取舊網址紀錄。移轉方式為舊頁匯出JSON、新頁匯入。GitHub Pages已停用；如須取回舊紀錄，可暫時恢復旧頁供使用者匯出，再關閉。
+
 
